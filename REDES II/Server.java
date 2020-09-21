@@ -125,7 +125,7 @@ public class Server extends JFrame implements ActionListener {
     while(!done)
       {
 	request_type = theServer.parse_RTSP_request(); //blocking
-	
+
 	if (request_type == SETUP)
 	  {
 	    done = true;

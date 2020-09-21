@@ -147,7 +147,7 @@ public class Client{
   class setupButtonListener implements ActionListener {
     public void actionPerformed(final ActionEvent e){
 
-      System.out.println("Setup Button pressed !");      
+      System.out.println("Setup Button pressed !");   
 
       if (state == INIT) 
 	{
@@ -157,9 +157,8 @@ public class Client{
 	    RTPsocket = new DatagramSocket(RTP_RCV_PORT);
 
 
-
 	    //set TimeOut value of the socket to 5msec.
-	    RTPsocket.setSoTimeout(5);
+	    RTPsocket.setSoTimeout(5); 
 
 	  }
 	  catch (final SocketException se){
@@ -168,8 +167,8 @@ public class Client{
 	  }
 
 	  //init RTSP sequence number
-	  RTSPSeqNb = 1;
-	 
+	  RTSPSeqNb = 1; 
+
 	  //Send SETUP message to the server
 	  send_RTSP_request("SETUP");
 
@@ -377,18 +376,19 @@ class timerListener implements ActionListener {
       // Use the RTSPBufferedWriter to write to the RTSP socket
 
       // write the request line:
-      RTSPBufferedWriter.write(request_type);
+      RTSPBufferedWriter.write(request_type + " " + VideoFileName + " RTSP/1.0" + CRLF);
+
       // write the CSeq line:
-      // ......
-      RTSPBufferedWriter.write(RTSPSeqNb);
+      RTSPBufferedWriter.write("CSeq: " + RTSPSeqNb + CRLF);
+
       // check if request_type is equal to "SETUP" and in this case write the
       // Transport: line advertising to the server the port used to receive the RTP
       // packets RTP_RCV_PORT
     if (request_type ==  "SETUP")
-      RTSPBufferedWriter.write(RTP_RCV_PORT);
+      RTSPBufferedWriter.write("Transport: RTP/UDP; client_port= " + RTP_RCV_PORT + CRLF);
       // otherwise, write the Session line from the RTSPid field
     else 
-      RTSPBufferedWriter.write(RTSPid); 
+      RTSPBufferedWriter.write(RTSPid + CRLF); 
       RTSPBufferedWriter.flush();
     } catch (final Exception ex)
       {
