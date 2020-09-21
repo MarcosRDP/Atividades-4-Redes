@@ -193,12 +193,12 @@ public class Client{
   class playButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent e){
 
-      //System.out.println("Play Button pressed !"); 
+      System.out.println("Play Button pressed !"); 
 
       if (state == READY) 
 	{
 	  //increase RTSP sequence number
-	  //.....
+	  RTSPSeqNb = RTSPSeqNb + 1;
 
 
 	  //Send PLAY message to the server
@@ -210,8 +210,8 @@ public class Client{
 	  else 
 	    {
 	      //change RTSP state and print out new state
-	      //.....
-	      // System.out.println("New RTSP state: ...")
+	      state = PLAYING
+	      System.out.println("New RTSP state: PLAYING")
 
 	      //start the timer
 	      timer.start();
@@ -231,7 +231,7 @@ public class Client{
       if (state == PLAYING) 
 	{
 	  //increase RTSP sequence number
-	  //........
+	  RTSPSeqNb = RTSPSeqNb + 1;
 
 	  //Send PAUSE message to the server
 	  send_RTSP_request("PAUSE");
@@ -242,8 +242,8 @@ public class Client{
 	  else 
 	    {
 	      //change RTSP state and print out new state
-	      //........
-	      //System.out.println("New RTSP state: ...");
+	      state = PAUSE
+	      System.out.println("New RTSP state: PAUSE");
 	      
 	      //stop the timer
 	      timer.stop();
@@ -261,7 +261,7 @@ public class Client{
       //System.out.println("Teardown Button pressed !");  
 
       //increase RTSP sequence number
-      // ..........
+      RTSPSeqNb = RTSPSeqNb + 1;
       
 
       //Send TEARDOWN message to the server
@@ -273,8 +273,8 @@ public class Client{
       else 
 	{     
 	  //change RTSP state and print out new state
-	  //........
-	  //System.out.println("New RTSP state: ...");
+	  state = ...
+	  System.out.println("New RTSP state: ...");
 
 	  //stop the timer
 	  timer.stop();
