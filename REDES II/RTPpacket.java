@@ -134,9 +134,9 @@ public class RTPpacket{
   {
     //construct the packet = header + payload
     for (int i=0; i < HEADER_SIZE; i++)
-	packet[i] = header[i];
+	    packet[i] = header[i];
     for (int i=0; i < payload_size; i++)
-	packet[i+HEADER_SIZE] = payload[i];
+	    packet[i+HEADER_SIZE] = payload[i];
 
     //return total size of the packet
     return(payload_size + HEADER_SIZE);
@@ -171,7 +171,7 @@ public class RTPpacket{
   public void printheader()
   {
     //TO DO: uncomment
-    /*
+    
     for (int i=0; i < (HEADER_SIZE-4); i++)
       {
 	for (int j = 7; j>=0 ; j--)
@@ -183,7 +183,7 @@ public class RTPpacket{
       }
 
     System.out.println();
-    */
+    
   }
 
   //return the unsigned value of 8-bit integer nb
