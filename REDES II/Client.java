@@ -147,7 +147,7 @@ public class Client{
   class setupButtonListener implements ActionListener {
     public void actionPerformed(final ActionEvent e){
 
-      //System.out.println("Setup Button pressed !");      
+      System.out.println("Setup Button pressed !");      
 
       if (state == INIT) 
 	{
@@ -385,7 +385,7 @@ class timerListener implements ActionListener {
       // Transport: line advertising to the server the port used to receive the RTP
       // packets RTP_RCV_PORT
     if (request_type ==  "SETUP")
-      RTSPBufferedWriter.write(RTP_RCV_PORT)
+      RTSPBufferedWriter.write(RTP_RCV_PORT);
       // otherwise, write the Session line from the RTSPid field
     else 
       RTSPBufferedWriter.write(RTSPid); 
