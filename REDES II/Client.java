@@ -273,8 +273,8 @@ public class Client{
       else 
 	{     
 	  //change RTSP state and print out new state
-	  state = ...
-	  System.out.println("New RTSP state: ...");
+	  state = INIT
+	  System.out.println("New RTSP state: INIT");
 
 	  //stop the timer
 	  timer.stop();
