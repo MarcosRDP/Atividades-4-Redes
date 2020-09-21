@@ -154,18 +154,20 @@ public class Client{
       if (state == INIT) 
 	{
 	  //Init non-blocking RTPsocket that will be used to receive data
-	  /*try{*/
+	  try{
 	    //construct a new DatagramSocket to receive RTP packets from the server, on port RTP_RCV_PORT
-	    //RTPsocket = ...
+	    RTPsocket = new DatagramSocket(RTP_RCV_PORT);
+        }
+
 
 	    //set TimeOut value of the socket to 5msec.
-	    //....
+	    RTPsocket.setSoTimeout(5);
 
-	  /*}
+	  }
 	  catch (SocketException se){
 	      System.out.println("Socket exception: "+se);
 	      System.exit(0);
-	  }*/
+	  }
 
 	  //init RTSP sequence number
 	  RTSPSeqNb = 1;
@@ -179,8 +181,8 @@ public class Client{
 	  else 
 	    {
 	      //change RTSP state and print new state 
-	      //state = ....
-	      //System.out.println("New RTSP state: ....");
+	      state = READY
+	      System.out.println("New RTSP state: READY");
 	    }
 	}//else if state != INIT then do nothing
     }
